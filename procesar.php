@@ -38,7 +38,28 @@ if (isset ( $_GET ['procesar'] ))
 		}//foreach
 		return $contarCodigo;
 	}//contarCodigoBuscado
+	if (empty($codigoProd))
+	{
+		echo "ERROR: Ingrese el código correcto a buscar!";
+	}
+	elseif (strlen($codigoProd)!=4) 
+	{
+		echo "</br>";
+		echo "ERROR: El código no tiene 4 digitos!";
+	}
+	elseif (!is_numeric($codigoProd)) 
+	{
+		echo "</br>";
+		echo "ERROR: El código no es numerico!";
+	}
+	
+	else 
+	{
 		mostrarListado($ventas);
 		$cuentaBuscado=contarCodigoBuscado($ventas,$codigoProd);
 		echo "La cantidad de codigos encontrados es: ".$cuentaBuscado;
+	}
+	
+	
+	
 }//isset()
